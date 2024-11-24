@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <div *ngIf="!loading">
+    <div class="card" style="width: 22rem;">
+      <div class="body">
+        <img class="logo" src="assets/img/seguridad-de-datos.png" alt="img login">
+        <h3>Login</h3>
+        <form (ngSubmit)="login()">
+          <div class="form-floating mb-3 mt-3">
+            <input type="text" [(ngModel)]="username" name="username" class="form-control" placeholder="Ingrese Usuario" required>
+            <label>Usuario</label>
+          </div>
+          <div class="form-floating mb-3">
+            <input type="password" [(ngModel)]="password" name="password" class="form-control" placeholder="Ingrese Password" required>
+            <label>Password</label>
+          </div>
+          <div class="d-grid gap-2">
+            <button type="submit" class="btn btn-primary btn-lg">Aceptar</button>
+          </div>
+        </form>
+        <p class="mt-3">No tienes Cuenta? <a routerLink="/signin">Registrar</a> </p>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="loading">
+    <app-spinner></app-spinner>
+  </div>
+</div>

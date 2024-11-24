@@ -1,0 +1,56 @@
+app-autorizado {
+  display: inline; /* Si solo quieres mostrarlo en línea con el texto, puedes usar inline o inline-block */
+  justify-content: space-between
+}
+
+.row {
+  display: flex;
+  justify-content: space-between; /* Alinea los elementos en los extremos */
+  align-items: center; /* Alinea verticalmente */
+}
+
+h1 {
+  margin-right: 20px; /* Espacio entre el título y el mensaje de bienvenida */
+}
+
+span {
+  margin-left: 10px; /* Espacio entre el texto y el título */
+}
+
+.mx-n1 {
+  display: flex;
+  gap: 5px; /* Espacio entre los botones */
+}
+
+.d-flex {
+  display: flex;
+  align-items: center;
+}
+
+.me-2 {
+  margin-right: 10px; /* Espacio entre el logo y el texto "TALLER" */
+}
+
+.ms-3 {
+  margin-left: 10px; /* Espacio entre el texto "TALLER" y el mensaje de bienvenida */
+}
+
+.mx-1 {
+  margin-left: 5px; /* Espacio entre los botones */
+}
+
+.justify-content-between {
+  justify-content: space-between; /* Alinea el contenido a los extremos del contenedor */
+}
+
+@media (max-width: 576px) {
+  .d-flex {
+    flex-direction: column; /* Apilar elementos en pantallas extra pequeñas */
+    align-items: flex-start; /* Alinear elementos a la izquierda */
+  }
+
+  .btn {
+    width: 100%; /* Los botones ocuparán todo el ancho en pantallas pequeñas */
+    margin-bottom: 10px; /* Separación entre los botones en pantallas pequeñas */
+  }
+}

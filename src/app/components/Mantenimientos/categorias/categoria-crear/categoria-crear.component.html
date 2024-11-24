@@ -1,0 +1,44 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">Agregar Categoria</h5>
+  </div>
+  <div class="card-body">
+    <form [formGroup]="formCategoria">
+      <!-- Primera fila: Código y Serial -->
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+          <div class="form-floating">
+            <div class="input-group">
+              <span class="input-group-text">Categoria</span>
+              <input type="text" class="form-control" id="categoria" formControlName="descripcion" placeholder="impresora" aria-label="Impresora"
+              [ngClass]="{'is-invalid': formCategoria.get('descripcion')?.invalid && formCategoria.get('descripcion')?.touched, 'is-valid' : formCategoria.get('descripcion')?.valid}">
+            </div>
+            <label for="Categoria"></label>
+            <span class="mt-2 valid-feedback">Looks good!</span>
+            <span class="mt-2 invalid-feedback" *ngIf="formCategoria.get('descripcion')?.errors?.['required']">la descripcion es requerido.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda fila: Categoría, Marca y Modelo -->
+      <div class="row">
+        <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+          <div class="form-floating">
+            <select class="form-select" id="estado" formControlName="estadoid" aria-label="estadoid"
+            [ngClass]="{'is-invalid': formCategoria.get('estadoid')?.invalid && formCategoria.get('estadoid')?.touched, 'is-valid': formCategoria.get('estadoid')?.valid && formCategoria.get('estadoid')?.touched}">
+            <option value="" disabled selected>Seleccionar Estado</option>
+            <option *ngFor="let estado of estadoList" [value]="estado.estadoId">{{ estado.descripcion }}</option>
+            </select>
+            <label for="estado">Estado</label>
+            <span class="mt-2 valid-feedback">Looks good!</span>
+            <span class="mt-2 invalid-feedback" *ngIf="formCategoria.get('estadoid')?.errors?.['required']">El estado es requerido.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de guardar -->
+      <button class="btn btn-success mt-3 m-lg-1" type="submit" [disabled]="formCategoria.invalid" (click)="guardarCategoria()">Guardar</button>
+      <button class="btn btn-primary mt-3 m-lg-1" type="button" (click)="volver()">Volver</button>
+    </form>
+  </div>
+</div>

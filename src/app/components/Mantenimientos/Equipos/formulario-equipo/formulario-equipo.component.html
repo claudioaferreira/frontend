@@ -1,0 +1,111 @@
+<form [formGroup]="form" (submit)="guardarCambios()" novalidate>
+  <!-- Primera fila: Código y Serial -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <div class="input-group">
+          <span class="input-group-text">CodigoJce</span>
+          <input type="text" class="form-control" id="codigo" formControlName="codigo" placeholder="123456" aria-label="Código"
+          [ngClass]="{
+            'is-invalid': codigoExiste === true || (form.get('codigo')?.invalid && form.get('codigo')?.touched),
+            'is-valid': codigoExiste === false && form.get('codigo')?.valid && form.get('codigo')?.touched
+          }">
+            <!-- <span class="mt-2 valid-feedback">Looks good!</span> -->
+          <span class="mt-2 valid-feedback">El código está disponible</span>
+          <span class="mt-2 invalid-feedback">El código ya existe.</span>
+          <span class="mt-2 invalid-feedback" *ngIf="form.get('codigo')?.errors?.['required']">El código es requerido.</span>
+          <span class="mt-2 invalid-feedback" *ngIf="form.get('codigo')?.errors?.['minlength']">El código debe tener al menos 6 caracteres.</span>
+          <span class="mt-2 invalid-feedback" *ngIf="form.get('codigo')?.errors?.['pattern']">El código debe contener solo números.</span>
+
+        </div>
+        <label for="codigo"></label>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <div class="input-group">
+          <span class="input-group-text">Serial</span>
+          <input type="text" class="form-control" id="serial" formControlName="Serial" placeholder="AV00-1X" aria-label="Número de Serial"
+            [ngClass]="{
+            'is-invalid': serialExiste === true  || form.get('Serial')?.invalid && form.get('Serial')?.touched,
+            'is-valid': serialExiste === true || form.get('Serial')?.valid && form.get('Serial')?.touched}">
+          <span class="mt-2 valid-feedback">El serial está disponible</span>
+          <span class="mt-2 invalid-feedback">El serial ya existe.</span>
+          <span class="mt-2 invalid-feedback" *ngIf="form.get('Serial')?.errors?.['required']">El serial es requerido.</span>
+        </div>
+        <label for="serial"></label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Segunda fila: Categoría, Marca y Modelo -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <select class="form-select" id="categoria" formControlName="Categoria" aria-label="Categoría"
+          [ngClass]="{'is-invalid': form.get('Categoria')?.invalid && form.get('Categoria')?.touched, 'is-valid': form.get('Categoria')?.valid && form.get('Categoria')?.touched}">
+          <option value="" disabled selected>Seleccionar Categoría</option>
+          <option *ngFor="let categoria of categoriaList" [value]="categoria.categoriaId">{{ categoria.descripcion }}</option>
+        </select>
+        <label for="categoria">Categoría</label>
+        <span class="mt-2 valid-feedback">Looks good!</span>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('Categoria')?.errors?.['required']">La categoría es requerida.</span>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <select class="form-select" id="marca" formControlName="Marca" aria-label="Marca"
+          [ngClass]="{'is-invalid': form.get('Marca')?.invalid && form.get('Marca')?.touched, 'is-valid': form.get('Marca')?.valid && form.get('Marca')?.touched}">
+          <option value="" disabled selected>Seleccionar Marca</option>
+          <option *ngFor="let marca of marcaList" [value]="marca.marcaId">{{ marca.descripcion }}</option>
+        </select>
+        <label for="marca">Marca</label>
+        <span class="mt-2 valid-feedback">Looks good!</span>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('Marca')?.errors?.['required']">La marca es requerida.</span>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <select class="form-select" id="modelo" formControlName="Modelo" aria-label="Modelo"
+          [ngClass]="{'is-invalid': form.get('Modelo')?.invalid && form.get('Modelo')?.touched, 'is-valid': form.get('Modelo')?.valid && form.get('Modelo')?.touched}">
+          <option value="" disabled selected>Seleccionar Modelo</option>
+          <option *ngFor="let modelo of modeloList" [value]="modelo.modeloId">{{ modelo.descripcion }}</option>
+        </select>
+        <label for="modelo">Modelo</label>
+        <span class="mt-2 valid-feedback">Looks good!</span>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('Modelo')?.errors?.['required']">El modelo es requerido.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tercera fila: Estado y Localidad -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <select class="form-select" id="estado" formControlName="Estado" aria-label="Estado"
+          [ngClass]="{'is-invalid': form.get('Estado')?.invalid && form.get('Estado')?.touched, 'is-valid': form.get('Estado')?.valid && form.get('Estado')?.touched}">
+          <option value="" disabled selected>Seleccionar Estado</option>
+          <option *ngFor="let estado of estadoList" [value]="estado.estadoId">{{ estado.descripcion }}</option>
+        </select>
+        <label for="estado">Estado</label>
+        <span class="mt-2 valid-feedback">Looks good!</span>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('Estado')?.errors?.['required']">El estado es requerido.</span>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <select class="form-select" id="localidad" formControlName="Localidad" aria-label="Localidad"
+          [ngClass]="{'is-invalid': form.get('Localidad')?.invalid && form.get('Localidad')?.touched, 'is-valid': form.get('Localidad')?.valid && form.get('Localidad')?.touched}">
+          <option value="" disabled selected>Seleccionar Localidad</option>
+          <option *ngFor="let localidad of localidadList" [value]="localidad.localidadId">{{ localidad.descripcion }}</option>
+        </select>
+        <label for="localidad">Localidad</label>
+        <span class="mt-2 valid-feedback">Looks good!</span>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('Localidad')?.errors?.['required']">La localidad es requerida.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón de guardar -->
+  <button class="btn btn-success mt-3" type="submit" [disabled]="form.invalid">Guardar</button>
+</form>

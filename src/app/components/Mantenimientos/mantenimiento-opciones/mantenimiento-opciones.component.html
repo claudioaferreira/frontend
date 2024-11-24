@@ -1,0 +1,271 @@
+<div class="row g-4 mb-6">
+
+  <!-- Tarjeta skeleton -->
+  <div *ngIf="loading" class="row g-4 mb-6">
+    <div *ngFor="let item of [1, 2, 3, 4, 5, 6,7,8]" class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title skeleton-title d-block"></span>
+              <ul class="list-unstyled">
+                <li class="skeleton-text"></li>
+                <li class="skeleton-text"></li>
+                <li class="skeleton-text"></li>
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape skeleton-icon text-lg rounded-circle"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="!loading" class="row g-4 mb-6">
+    <!-- Tarjeta para EQUIPOS -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title bg-primary text-white d-block">EQUIPOS</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a routerLink="../equipo-list" class="text-decoration-none">
+                    <i class="bi bi-eye"></i> Ver Equipos
+                  </a>
+                </li>
+                <li>
+                  <a (click)="nuevoEquipo()" class="text-decoration-none">
+                    <i class="bi bi-plus-circle"></i> Agregar Equipo
+                  </a>
+                </li>
+                <!--         <li>
+                <a routerLink="../equipo-editar" class="text-decoration-none disabled">
+                  <i class="bi bi-pencil-square"></i> Editar Equipos
+                </a>
+              </li> -->
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-primary text-white text-lg rounded-circle">
+                <i class="bi bi-tools"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta para CATEGORÍA -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title bg-warning text-white d-block">CATEGORÍA</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a routerLink="../categorias-master" class="text-decoration-none">
+                    <i class="bi bi-eye"></i> Ver Categorías
+                  </a>
+                </li>
+                <li>
+                  <a (click)="nuevoCategoria()" class="text-decoration-none">
+                    <i class="bi bi-plus-circle"></i> Agregar Categoría
+                  </a>
+                </li>
+                <!--               <li>
+                <a routerLink="../categorias-editar" class="text-decoration-none">
+                  <i class="bi bi-pencil-square"></i> Editar Categoría
+                </a>
+              </li> -->
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-warning text-white text-lg rounded-circle">
+                <i class="bi bi-tags"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta para MARCA -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title bg-info text-white d-block">MARCA</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a routerLink="../marcas-list" class="text-decoration-none">
+                    <i class="bi bi-eye"></i> Ver Marcas
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="../marcas-crear" class="text-decoration-none">
+                    <i class="bi bi-plus-circle"></i> Agregar Marca
+                  </a>
+                </li>
+                <!--               <li>
+                <a routerLink="../marcas-editar" class="text-decoration-none">
+                  <i class="bi bi-pencil-square"></i> Editar Marca
+                </a>
+              </li> -->
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-info text-white text-lg rounded-circle">
+                <i class="bi bi-award"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta para MODELO -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title bg-success text-white d-block">MODELO</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a routerLink="../modelos-list" class="text-decoration-none">
+                    <i class="bi bi-eye"></i> Ver Modelos
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="../modelos-crear" class="text-decoration-none">
+                    <i class="bi bi-plus-circle"></i> Agregar Modelo
+                  </a>
+                </li>
+                <!--               <li>
+                <a routerLink="../modelos-editar" class="text-decoration-none">
+                  <i class="bi bi-pencil-square"></i> Editar Modelo
+                </a>
+              </li> -->
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-success text-white text-lg rounded-circle">
+                <i class="bi bi-box-seam"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta para LOCALIDAD -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title bg-danger text-white d-block">LOCALIDAD</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a routerLink="../localidad-list" class="text-decoration-none">
+                    <i class="bi bi-eye"></i> Ver Localidades
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="../localidad-crear" class="text-decoration-none">
+                    <i class="bi bi-plus-circle"></i> Agregar Localidad
+                  </a>
+                </li>
+                <!--               <li>
+                <a routerLink="../localidad-editar" class="text-decoration-none">
+                  <i class="bi bi-pencil-square"></i> Editar Localidad
+                </a>
+              </li> -->
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-danger text-white text-lg rounded-circle">
+                <i class="bi bi-geo-alt"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta para USUARIO -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title bg-secondary text-white d-block">USUARIO</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a routerLink="../usuarios-list" class="text-decoration-none">
+                    <i class="bi bi-eye"></i> Ver Usuarios
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="../usuarios-crear" class="text-decoration-none">
+                    <i class="bi bi-plus-circle"></i> Agregar Usuario
+                  </a>
+                </li>
+                <!--               <li>
+                <a routerLink="../usuarios-editar" class="text-decoration-none">
+                  <i class="bi bi-pencil-square"></i> Editar Usuario
+                </a>
+              </li> -->
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-secondary text-white text-lg rounded-circle">
+                <i class="bi bi-person"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tarjeta para EMPLEADOS -->
+    <div class="col-xl-3 col-sm-6 col-12">
+      <div class="card shadow border-0 text-decoration-none">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <span class="card-title bg-dark text-white d-block">Empleados</span>
+              <ul class="list-unstyled">
+                <li>
+                  <a routerLink="../empleado-master" class="text-decoration-none">
+                    <i class="bi bi-eye"></i> Ver Empleados
+                  </a>
+                </li>
+                <li>
+                  <a (click)="nuevoEmpleado()" class="text-decoration-none">
+                    <i class="bi bi-plus-circle"></i> Agregar Empleado
+                  </a>
+                </li>
+                <li>
+                  <a routerLink="../empleado-master" class="text-decoration-none">
+                    <i class="bi bi-pencil-square"></i> Editar Empleado
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="col-auto">
+              <div class="icon icon-shape bg-dark text-white text-lg rounded-circle">
+                <i class="bi bi-person-badge"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

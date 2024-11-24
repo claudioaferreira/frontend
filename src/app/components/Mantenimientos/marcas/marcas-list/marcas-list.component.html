@@ -1,0 +1,63 @@
+<mat-card appearance="outlined" style="width: 80%; margin:10px auto">
+  <mat-card-header>
+    <mat-card-title>
+      <p>Lista Marcas</p>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <button style="margin-top: 10px;" mat-flat-button (click)="nuevo()">Nueva Marca</button>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z2" style="margin-top:20px">
+
+      <!-- Marca ID Column -->
+      <ng-container matColumnDef="marcaId">
+        <th mat-header-cell *matHeaderCellDef> Marca ID</th>
+        <td mat-cell *matCellDef="let element"> {{element.marcaId}} </td>
+      </ng-container>
+
+      <!-- Descripcion Column -->
+      <ng-container matColumnDef="descripcion">
+        <th mat-header-cell *matHeaderCellDef> Descripcion</th>
+        <td mat-cell *matCellDef="let element"> {{element.descripcion}} </td>
+      </ng-container>
+
+      <!-- CategoriaColumn -->
+      <ng-container matColumnDef="categoria">
+        <th mat-header-cell *matHeaderCellDef> Categoria </th>
+        <td mat-cell *matCellDef="let element"> {{element.categoria}}</td>
+      </ng-container>
+
+      <!-- Estado Column -->
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let element">
+          <span [ngClass]="getBadgeClass(element.estado)">{{element.estado}}</span>
+        </td>
+      </ng-container>
+
+      <!-- Fecha de Contrato Column -->
+      <!--       <ng-container matColumnDef="fechaContrato">
+        <th mat-header-cell *matHeaderCellDef> Fecha de Contrato </th>
+        <td mat-cell *matCellDef="let element"> {{element.fechaContrato}} </td>
+      </ng-container>
+ -->
+      <!-- Acciones Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>
+
+        </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="editar(element)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="eliminar(element)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[10, 20, 50, 100]" showFirstLastButtons></mat-paginator>
+  </mat-card-content>
+</mat-card>

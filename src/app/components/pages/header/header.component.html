@@ -1,0 +1,166 @@
+<header class="bg-surface-primary border-bottom pt-6 pb-2">
+  <div class="container-fluid">
+    <div class="mb-npx">
+      <div class="row align-items-center justify-content-between">
+        <!-- Título, logo y bienvenida -->
+        <div class="col-12 col-md-6 d-flex align-items-center mb-3 mb-md-0">
+          <h1 class="h2 mb-0 ls-tight d-flex align-items-center">
+            <img src=".//public/assets/img/icon.png" width="40" class="me-2"> TALLER
+          </h1>
+          <app-autorizado>
+            <ng-container autorizado>
+              <span class="ms-3">Bienvenido: <strong>{{username}} - {{rol}}</strong></span>
+            </ng-container>
+          </app-autorizado>
+        </div>
+
+        <!-- Contenedor para los botones y el menú del usuario -->
+        <div class="col-12 col-md-6 d-flex align-items-center justify-content-md-end">
+
+          <!-- Botones de acción (visible en pantallas grandes) -->
+          <app-autorizado rol="admin">
+            <ng-container autorizado>
+              <div class="d-none d-md-flex">
+<!--                 <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                  <span class="pe-2">
+                    <i class="bi bi-pencil"></i>
+                  </span>
+                  <span>Edit</span>
+                </a> -->
+<!--                 <a routerLink="equipo-crear" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                  <span class="pe-2">
+                    <i class="bi bi-plus"></i>
+                  </span>
+                  <span>Añadir Equipo</span>
+                </a> -->
+                <div class="">
+                  <button  routerLink="mantenimiento" class="btn d-inline-flex btn-sm btn-warning mx-1" type="button" id="dropdownMenuButton">
+                    <span class="pe-2">
+                      <i class="bi bi-gear-wide-connected"></i>
+                    </span>
+                    <span>MANTENIMIENTO</span>
+                  </button>
+ <!--                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                      <a routerLink="equipo-crear" class="dropdown-item text-primary">
+                        <i class="bi bi-plus pe-2"></i>Agregar equipos
+                      </a>
+                    </li>
+                    <li>
+                      <a routerLink="categoria-crear" class="dropdown-item text-success">
+                        <i class="bi bi-plus pe-2"></i>Agregar categoría
+                      </a>
+                    </li>
+                    <li>
+                      <a routerLink="marca-crear" class="dropdown-item text-info">
+                        <i class="bi bi-plus pe-2"></i>Agregar marca
+                      </a>
+                    </li>
+                    <li>
+                      <a routerLink="modelo-crear" class="dropdown-item text-warning">
+                        <i class="bi bi-plus pe-2"></i>Agregar modelo
+                      </a>
+                    </li>
+                  </ul> -->
+                </div>
+              </div>
+
+            </ng-container>
+            <ng-container noAutorizado>
+              <div class="d-none d-md-flex">
+                <!--                 <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                                  <span class="pe-2">
+                                    <i class="bi bi-pencil"></i>
+                                  </span>
+                                  <span>Edit</span>
+                                </a> -->
+                <!--                 <a routerLink="equipo-crear" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                                  <span class="pe-2">
+                                    <i class="bi bi-plus"></i>
+                                  </span>
+                                  <span>Añadir Equipo</span>
+                                </a> -->
+                                <div class="">
+                                  <button  routerLink="mantenimiento" class="btn d-inline-flex btn-sm btn-warning mx-1 disabled" type="button" id="dropdownMenuButton">
+                                    <span class="pe-2">
+                                      <i class="bi bi-gear-wide-connected"></i>
+                                    </span>
+                                    <span>MANTENIMIENTO</span>
+                                  </button>
+                 <!--                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <li>
+                                      <a routerLink="equipo-crear" class="dropdown-item text-primary">
+                                        <i class="bi bi-plus pe-2"></i>Agregar equipos
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a routerLink="categoria-crear" class="dropdown-item text-success">
+                                        <i class="bi bi-plus pe-2"></i>Agregar categoría
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a routerLink="marca-crear" class="dropdown-item text-info">
+                                        <i class="bi bi-plus pe-2"></i>Agregar marca
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a routerLink="modelo-crear" class="dropdown-item text-warning">
+                                        <i class="bi bi-plus pe-2"></i>Agregar modelo
+                                      </a>
+                                    </li>
+                                  </ul> -->
+                                </div>
+                              </div>
+            </ng-container>
+          </app-autorizado>
+
+          <!-- Menú usuario con avatar (visible solo en pantallas grandes) -->
+          <div class="d-none d-md-flex align-items-center ms-3">
+            <div class="dropdown">
+              <a href="#" id="sidebarAvatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div class="avatar-parent-child">
+                  <img alt="Image Placeholder" src="https://images.unsplash.com/photo-1548142813-c348350df52b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=3&w=256&h=256&q=80" class="avatar avatar- rounded-circle">
+                  <span class="avatar-child avatar-badge bg-success"></span>
+                </div>
+              </a>
+              <div class="dropdown-menu dropdown-menu-end" aria-labelledby="sidebarAvatar">
+                <a href="#" class="dropdown-item">Profile</a>
+                <a href="#" class="dropdown-item">Settings</a>
+                <a href="#" class="dropdown-item">Billing</a>
+                <hr class="dropdown-divider">
+                <a href="#" class="dropdown-item">Logout</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botones de acción (visible en pantallas pequeñas) -->
+          <app-autorizado rol="admin">
+            <ng-container autorizado>
+              <div class="d-md-none d-flex ms-3">
+                <a href="#" class="btn d-inline-flex btn-sm btn-neutral border-base mx-1">
+                  <span class="pe-2">
+                    <i class="bi bi-pencil"></i>
+                  </span>
+                  <span>Edit</span>
+                </a>
+                <a href="#" class="btn d-inline-flex btn-sm btn-primary mx-1">
+                  <span class="pe-2">
+                    <i class="bi bi-plus"></i>
+                  </span>
+                  <span>Create</span>
+                </a>
+                <a href="#" class="btn d-inline-flex btn-sm btn-warning mx-1">
+                  <span class="pe-2">
+                    <i class="bi bi-gear-wide-connected"></i>
+                  </span>
+                  <span>Manage</span>
+                </a>
+              </div>
+            </ng-container>
+          </app-autorizado>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

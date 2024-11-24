@@ -1,0 +1,33 @@
+<div class="wrapper">
+  @if(!loading){
+    <div class="card" style="width: 22rem;">
+      <div class="body">
+        <img class="logo" src="assets/img/seguridad-de-datos.png" alt="img login">
+        <h3>Registrar Usuario</h3>
+        <div class="form-floating mb-3 mt-3">
+          <input type="text" [(ngModel)]="username" class="form-control" placeholder="Ingrese Usuario">
+          <label>Usuario</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" [(ngModel)]="password" class="form-control" placeholder="Ingrese Password">
+          <label>Ingrese Password</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="password" [(ngModel)]="confirmPassword" class="form-control" placeholder="Confirmar Password">
+          <label>Confirmar Password</label>
+        </div>
+        <div class="d-grid gap-2 mb-3">
+          <button type="button" (click)="addUser()" class="btn btn-primary btn-lg">Aceptar</button>
+        </div>
+        <a  routerLink="/login">Volver</a>
+      </div>
+    </div>
+
+  }
+
+  @if (loading) {
+    <app-spinner/>
+  }
+
+
+</div>

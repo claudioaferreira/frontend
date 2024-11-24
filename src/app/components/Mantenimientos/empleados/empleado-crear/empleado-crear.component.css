@@ -1,0 +1,31 @@
+.container {
+  width: 40%; /* Aumentar el ancho del contenedor */
+  padding: 15px;
+  margin: 5px auto;
+  display: flex;
+  justify-content: center;
+}
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  gap: 15px; /* Espacio entre los campos */
+}
+
+.mat-form-field {
+  width: 100%; /* Asegurarse de que los campos ocupen todo el ancho disponible */
+}
+
+.mat-input-element {
+  width: 100%; /* Asegurarse de que los inputs ocupen todo el ancho disponible */
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}

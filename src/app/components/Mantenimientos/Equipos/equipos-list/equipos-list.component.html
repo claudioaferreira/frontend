@@ -1,0 +1,67 @@
+<div class="card shadow border-0 mb-7">
+
+  <div class="container mt-2 text-center">
+    <hr class="navbar-divider my-5 opacity-80">
+    <h2>Equipos</h2>
+    <button style="margin-top: 10px;" mat-flat-button (click)="nuevo()">Agregar Equipo</button>
+<!--     <button type="button" style="margin-top: 10px;" (click)="nuevo()">Agregar Equipo</button> -->
+    <hr class="navbar-divider my-5 opacity-80">
+
+    <div class="table-responsive">
+      <table class="table table-hover table-nowrap">
+        <thead class="thead-light">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Codigo</th>
+            <th scope="col">Serial</th>
+            <th scope="col">Marca</th>
+            <th scope="col">Modelo</th>
+            <th scope="col">Categoria</th>
+            <th scope="col">estado</th>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody>
+          @for (equipo of productList; track $index) {
+          <tr>
+            <th scope="row">{{equipo.equipoid}}</th>
+            <td>{{equipo.codJce}}</td>
+            <td>{{equipo.serial}}</td>es
+            <td>{{equipo.marca}}</td>
+            <td>{{equipo.modelo}}</td>
+            <td>{{equipo.categoria}}</td>
+            <td>
+              <span [ngClass]="getBadgeClass(equipo.estado)">{{equipo.estado}}</span>
+            </td>
+            <app-autorizado rol="admin">
+              <ng-container autorizado>
+                <td class="text-end">
+                  <a (click)="verDetalles()" class="btn btn-sm btn-neutral">View</a>
+                  <button type="button" (click)="editarEquipo(equipo.equipoid)" class="btn btn-sm btn-square btn-neutral text-danger-hover"><i class="bi bi-pencil"></i>
+                  </button>
+                </td>
+              </ng-container>
+
+            </app-autorizado>
+
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-footer border-0 py-5">
+    <span class="text-muted text-sm">Showing 10 items out of 250 results found</span>
+    <nav aria-label="Page navigation example">
+      <ul class="pagination">
+        <li class="page-item"><a class="page-link disabled" href="#">Previous</a></li>
+        <li class="page-item"><a class="page-link bg-info text-white" href="#">1</a></li>
+        <li class="page-item"><a class="page-link" href="#">2</a></li>
+        <li class="page-item"><a class="page-link" href="#">3</a></li>
+        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+      </ul>
+    </nav>
+</div>
+</div>
+

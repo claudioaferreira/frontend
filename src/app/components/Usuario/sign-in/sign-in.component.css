@@ -1,0 +1,71 @@
+html, body {
+  height: 100%;
+  background-color: #FBF8E5; /* Fondo general */
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #FBF8E5; /* Fondo del contenedor */
+  height: 100%;
+}
+
+.logo {
+  height: 130px;
+  margin-bottom: 1px;
+}
+
+.body {
+  max-width: 300px;
+  width: 100%;
+  text-align: center;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 350px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 10px;
+  background-color: #D9CBB6; /* Fondo de la tarjeta más oscuro */
+  border: 1px solid #a87532; /* Borde de la tarjeta */
+}
+
+h3 {
+  color: #331B00; /* Color del título */
+}
+
+.form-control {
+  border: 1px solid #a87532; /* Borde de los campos de entrada */
+}
+
+.form-control:focus {
+  border-color: #a87532; /* Borde de los campos de entrada al enfocarse */
+  box-shadow: 0 0 0 0.2rem rgba(168, 117, 50, 0.25); /* Sombra al enfocarse */
+}
+
+.btn-primary {
+  background-color: #a87532; /* Fondo del botón */
+  border-color: #a87532; /* Borde del botón */
+}
+
+.btn-primary:hover {
+  background-color: #331B00; /* Fondo del botón al pasar el ratón */
+  border-color: #331B00; /* Borde del botón al pasar el ratón */
+}
+
+p {
+  color: #331B00; /* Color del texto */
+}
+
+a {
+  color: #a87532; /* Color del enlace */
+}
+
+a:hover {
+  color: #331B00; /* Color del enlace al pasar el ratón */
+}

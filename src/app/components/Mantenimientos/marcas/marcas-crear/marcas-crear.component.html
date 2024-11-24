@@ -1,0 +1,71 @@
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0">Agregar Marca</h5>
+  </div>
+  <div class="card-body d-flex justify-content-center">
+    <form [formGroup]="formMarca" class="w-100" style="max-width: 600px;">
+      <!-- Primera fila: Código y Serial -->
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-6 col-lg-8 mb-3">
+          <div class="form-floating">
+            <div class="input-group">
+              <span class="input-group-text">Marca</span>
+              <input type="text" class="form-control" id="categoria" formControlName="descripcion" placeholder="DELL" aria-label="DELL"
+              [ngClass]="{'is-invalid': formMarca.get('descripcion')?.invalid && formMarca.get('descripcion')?.touched, 'is-valid': formMarca.get('descripcion')?.valid && formMarca.get('descripcion')?.touched}">
+              <span class="mt-2 valid-feedback">Looks good!</span>
+              <span class="mt-2 invalid-feedback" *ngIf="formMarca.get('descripcion')?.errors?.['required']">La marca es requerido.</span>
+            </div>
+            <label for="Marca"></label>
+          </div>
+        </div>
+      </div>
+
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-6 col-lg-8 mb-3">
+          <div class="form-floating">
+            <div class="input-group">
+              <span class="input-group-text">Categoria</span>
+              <select class="form-select" id="categoria" formControlName="categoriaid" aria-label="categoriaid"
+              [ngClass]="{'is-invalid': formMarca.get('categoriaid')?.invalid && formMarca.get('categoriaid')?.touched,
+              'is-valid': formMarca.get('categoriaid')?.valid && formMarca.get('categoriaid')?.touched}">
+              <option value="" disabled selected>Seleccionar Categoria:</option>
+              <option *ngFor="let categoria of categoriaList" [value]="categoria.categoriaId">{{ categoria.descripcion }}</option>
+              </select>
+              <!-- <label for="estado">Categoria</label> -->
+              <span class="mt-2 valid-feedback">Looks good!</span>
+              <span class="mt-2 invalid-feedback" *ngIf="formMarca.get('estadoid')?.errors?.['required']">La Categoria es requerido.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Segunda fila: Categoría, Marca y Modelo -->
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-6 col-lg-8 mb-3">
+          <div class="form-floating">
+            <div class="input-group">
+              <span class="input-group-text">Estado</span>
+              <select class="form-select" id="estado" formControlName="estadoid" aria-label="estadoid"
+              [ngClass]="{'is-invalid': formMarca.get('estadoid')?.invalid && formMarca.get('estadoid')?.touched,
+              'is-valid': formMarca.get('estadoid')?.valid && formMarca.get('estadoid')?.touched}">
+              <option value="" disabled selected>Seleccionar Estado</option>
+              <option *ngFor="let estado of estadoList" [value]="estado.estadoId">{{ estado.descripcion }}</option>
+              </select>
+              <!-- <label for="estado">Estado</label> -->
+              <span class="mt-2 valid-feedback">Looks good!</span>
+              <span class="mt-2 invalid-feedback" *ngIf="formMarca.get('estadoid')?.errors?.['required']">El estado es requerido.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de guardar -->
+      <div class="row justify-content-center">
+        <div class="col-sm-12 col-md-6 col-lg-8 mb-3 d-flex justify-content-between">
+          <button class="btn btn-success mt-3 m-lg-1" type="submit" [disabled]="formMarca.invalid" (click)="guardarMarca()">Guardar</button>
+          <button class="btn btn-primary mt-3 m-lg-1" type="button" (click)="volver()">Volver</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
