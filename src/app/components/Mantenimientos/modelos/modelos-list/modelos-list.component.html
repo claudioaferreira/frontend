@@ -1,20 +1,71 @@
-<div class="product-card">
-  <!-- Imagen del producto -->
-  <div class="product-card__thumbnail">
-    <img class="product-card__image" src="https://m.media-amazon.com/images/I/41tbwY209wL.jpg" alt="Epson ECOTANK ET-14100 A3 SMALL AIO">
+<form [formGroup]="form" (ngSubmit)="guardarCita()" novalidate>
+  <!-- Primera fila: Selección de empleado -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <select class="form-select" id="empleado" formControlName="empleado" aria-label="Empleado"
+          [ngClass]="{'is-invalid': form.get('empleado')?.invalid && form.get('empleado')?.touched, 'is-valid': form.get('empleado')?.valid && form.get('empleado')?.touched}">
+          <option value="" disabled selected>Seleccionar Empleado</option>
+          <option *ngFor="let empleado of empleadosList" [value]="empleado.id">{{ empleado.nombre }}</option>
+        </select>
+        <label for="empleado">Empleado</label>
+        <span class="mt-2 valid-feedback">Looks good!</span>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('empleado')?.errors?.['required']">El empleado es requerido.</span>
+      </div>
+    </div>
   </div>
 
-  <!-- Contenido del producto -->
-  <div class="product-card__details">
-    <h2 class="product-card__title">Epson ECOTANK ET-14100 A3 SMALL AIO</h2>
-    <div class="product-card__description">
-      <p>Di adiós a los cartuchos: con un sistema de depósito de tinta...</p>
-      <p>Siga ahorrando - Aproveche las ventajas de las impresiones de bajo...</p>
-      <p>Fácil de usar y fiable - Este modelo es ideal si los usuarios buscan...</p>
-      <p>Imprima desde casi cualquier lugar - Es fácil imprimir desde...</p>
+  <!-- Segunda fila: Rango de fechas -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <input type="date" class="form-control" id="fechaInicio" formControlName="fechaInicio" aria-label="Fecha Inicio"
+          [ngClass]="{'is-invalid': form.get('fechaInicio')?.invalid && form.get('fechaInicio')?.touched, 'is-valid': form.get('fechaInicio')?.valid && form.get('fechaInicio')?.touched}">
+        <label for="fechaInicio">Fecha de Inicio</label>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('fechaInicio')?.errors?.['required']">La fecha de inicio es requerida.</span>
+      </div>
     </div>
-    <div class="product-card__footer">
-      <button class="product-card__button">Precio más barato</button>
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <input type="date" class="form-control" id="fechaFin" formControlName="fechaFin" aria-label="Fecha Fin"
+          [ngClass]="{'is-invalid': form.get('fechaFin')?.invalid && form.get('fechaFin')?.touched, 'is-valid': form.get('fechaFin')?.valid && form.get('fechaFin')?.touched}">
+        <label for="fechaFin">Fecha de Fin</label>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('fechaFin')?.errors?.['required']">La fecha de fin es requerida.</span>
+      </div>
     </div>
   </div>
-</div>
+
+  <!-- Tercera fila: Descripción -->
+  <div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-4 mb-3">
+      <div class="form-floating">
+        <textarea class="form-control" id="descripcion" formControlName="descripcion" placeholder="Descripción de la cita"
+          [ngClass]="{'is-invalid': form.get('descripcion')?.invalid && form.get('descripcion')?.touched, 'is-valid': form.get('descripcion')?.valid && form.get('descripcion')?.touched}" style="height: 100px;"></textarea>
+        <label for="descripcion">Descripción</label>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('descripcion')?.errors?.['required']">La descripción es requerida.</span>
+        <span class="mt-2 invalid-feedback" *ngIf="form.get('descripcion')?.errors?.['maxlength']">La descripción no puede exceder los 250 caracteres.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón de guardar -->
+  <div class="row">
+    <div class="col-sm-12">
+      <button class="btn btn-success" type="submit" [disabled]="form.invalid">Guardar Cita</button>
+    </div>
+  </div>
+
+  <!-- Lista de citas agendadas -->
+  <div class="row mt-5">
+    <div class="col-sm-12">
+      <h5>Citas Agendadas</h5>
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let cita of citasList">
+          <strong>Empleado:</strong> {{ cita.employee }} |
+          <strong>Fecha:</strong> {{ cita.dateRange.start }} - {{ cita.dateRange.end }} |
+          <strong>Descripción:</strong> {{ cita.dateRange.appointmentDescription }}
+        </li>
+      </ul>
+    </div>
+  </div>
+</form>

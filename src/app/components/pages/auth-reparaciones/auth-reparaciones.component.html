@@ -1,91 +1,102 @@
-<div class="py-5">
-
-  @if(autorizadosList.length > 0) {
-
-  <div class="container text-center">
-    <div class="row">
-
-      <!-- tarjeta generada con los datos de tu consulta -->
-      @for (item of autorizadosList; track $index) {
-      <div class="col-md-4">
-        @if (!loading){
-        <div class="card mb-4 shadow-sm">
-          <div class="card-header bg-dark text-white position-relative">
-            <h5 class="card-title"></h5>
-            <span class="badge text-bg-danger position-absolute top-3 end-0 m-2 fs-5 fw-bold">ID:
-              {{item.reparadosId}}</span>
-          </div>
-          <div class="card-body ">
-            <!-- Código, Marca y Modelo destacados -->
-            <h6 class="card-subtitle mb-2">
-              <span class="fw-bold text-primary fs-5">Código:</span>
-              <span class="text-dark fs-5">{{item.CodigoJCE}}</span>
-            </h6>
-            <h6 class="card-subtitle mb-2">
-              <span class="fw-bold text-primary fs-5">Marca:</span>
-              <span class="text-dark fs-5">{{item.marca}}</span>
-            </h6>
-            <h6 class="card-subtitle mb-3">
-              <span class="fw-bold text-primary fs-5">Modelo:</span>
-              <span class="text-dark fs-5">{{item.Modelo}}</span>
-            </h6>
-
-            <!-- Información relevante destacada -->
-            <div class="info-card p-2 mb-2">
-              <h6 class="card-title">Detalles de Reparación</h6>
-              <p><strong>Reparado por:</strong> {{item.ReparadoPor}}</p>
-              <p><strong>Técnico Transporta:</strong> {{item.TecnicoTransporta}}</p>
-              <p><strong>Procedencia:</strong> {{item.Procedencia}}</p>
-              <p><strong class="text-info">Solución:</strong> {{item.solucion}}</p>
-              <p>
-                <strong class="text-info">Comentario:</strong>
-                <span *ngIf="item.comentario">{{item.comentario}}</span>
-                <span *ngIf="!item.comentario">SIN COMENTARIO</span>
-              </p>
-              <p>
-                <ng-container *ngIf="!item.prob1 && !item.prob2 && !item.prob3 && !item.prob4 && !item.prob5; else showProblems">
-                  <strong>Problemas:</strong> SIN PROBLEMAS
-                </ng-container>
-                <ng-template #showProblems>
-                  <strong>Problemas:</strong>
-                  <span *ngIf="item.prob1">{{item.prob1}}</span>
-                  <span *ngIf="item.prob2"> - {{item.prob2}}</span>
-                  <span *ngIf="item.prob3"> - {{item.prob3}}</span>
-                  <span *ngIf="item.prob4"> - {{item.prob4}}</span>
-                  <span *ngIf="item.prob5"> - {{item.prob5}}</span>
-                </ng-template>
-              </p>
-            </div>
-
-            <!-- Estado destacado centrado -->
-            <div class="text-center">
-              <strong class="text-info fs-5">Estado:</strong><br>
-              <span [class]="getBadgeClass(item.estado)">
-                {{item.estado ? item.estado : 'DESCONOCIDO'}}
-              </span><br>
-            </div>
-
-            <p class="card-text">
-              <small class="text-muted">Fecha: {{item.fecha | date}}</small>
-            </p>
-          </div>
-          <!-- Footer con botones -->
-          <div class="card-footer text-end">
-            <a class="btn btn-primary btn-sm m-1">Ver detalles</a>
-            <a class="btn btn-success btn-sm" (click)="autorizar()">Autorizar</a>
-          </div>
-        </div>
-        }
-      </div>
-      <!-- Fin de la tarjeta -->
-      }
-
-      <!-- Fin de la tarjeta -->
-    </div>
+<div class="card">
+  <div class="card-header">
+    <h5 class="mb-0" name="autorizarRepa">Autorizar Reparaciones</h5>
   </div>
+  <div class="card-body">
 
-  }
-  @if (loading) {
-  <app-spinner />
-  }
+    <div class="py-5">
+
+      @if(autorizadosList.length > 0) {
+
+      <div class="container text-center">
+        <div class="row">
+
+          <!-- tarjeta generada con los datos de tu consulta -->
+          @for (item of autorizadosList; track $index) {
+          <div class="col-md-4">
+            @if (!loading){
+            <div class="card mb-4 shadow-sm">
+              <div class="card-header bg-dark text-white position-relative">
+                <h5 class="card-title"></h5>
+                <span class="badge text-bg-danger position-absolute top-3 end-0 m-2 fs-5 fw-bold">ID:
+                  {{item.reparadosId}}</span>
+              </div>
+              <div class="card-body ">
+                <!-- Código, Marca y Modelo destacados -->
+                <h6 class="card-subtitle mb-2">
+                  <span class="fw-bold text-primary fs-5">Código:</span>
+                  <span class="text-dark fs-5">{{item.CodigoJCE}}</span>
+                </h6>
+                <h6 class="card-subtitle mb-2">
+                  <span class="fw-bold text-primary fs-5">Marca:</span>
+                  <span class="text-dark fs-5">{{item.marca}}</span>
+                </h6>
+                <h6 class="card-subtitle mb-3">
+                  <span class="fw-bold text-primary fs-5">Modelo:</span>
+                  <span class="text-dark fs-5">{{item.Modelo}}</span>
+                </h6>
+
+                <!-- Información relevante destacada -->
+                <div class="info-card p-2 mb-2">
+                  <h6 class="card-title">Detalles de Reparación</h6>
+                  <p><strong>Reparado por:</strong> {{item.ReparadoPor}}</p>
+                  <p><strong>Técnico Transporta:</strong> {{item.TecnicoTransporta}}</p>
+                  <p><strong>Procedencia:</strong> {{item.Procedencia}}</p>
+                  <p><strong class="text-info">Solución:</strong> {{item.solucion}}</p>
+                  <p>
+                    <strong class="text-info">Comentario:</strong>
+                    <span *ngIf="item.comentario">{{item.comentario}}</span>
+                    <span *ngIf="!item.comentario">SIN COMENTARIO</span>
+                  </p>
+                  <p>
+                    <ng-container
+                      *ngIf="!item.prob1 && !item.prob2 && !item.prob3 && !item.prob4 && !item.prob5; else showProblems">
+                      <strong>Problemas:</strong> SIN PROBLEMAS
+                    </ng-container>
+                    <ng-template #showProblems>
+                      <strong>Problemas:</strong>
+                      <span *ngIf="item.prob1">{{item.prob1}}</span>
+                      <span *ngIf="item.prob2"> - {{item.prob2}}</span>
+                      <span *ngIf="item.prob3"> - {{item.prob3}}</span>
+                      <span *ngIf="item.prob4"> - {{item.prob4}}</span>
+                      <span *ngIf="item.prob5"> - {{item.prob5}}</span>
+                    </ng-template>
+                  </p>
+                </div>
+
+                <!-- Estado destacado centrado -->
+                <div class="text-center">
+                  <strong class="text-info fs-5">Estado:</strong><br>
+                  <span [class]="getBadgeClass(item.estado)">
+                    {{item.estado ? item.estado : 'DESCONOCIDO'}}
+                  </span><br>
+                </div>
+
+                <p class="card-text">
+                  <small class="text-muted">Fecha: {{item.fecha | date}}</small>
+                </p>
+              </div>
+              <!-- Footer con botones -->
+              <div class="card-footer text-end">
+                <a class="btn btn-primary btn-sm m-1">Ver detalles</a>
+                <a class="btn btn-success btn-sm" (click)="autorizar()">Autorizar</a>
+              </div>
+            </div>
+            }
+          </div>
+          <!-- Fin de la tarjeta -->
+          }
+
+          <!-- Fin de la tarjeta -->
+        </div>
+      </div>
+
+      }
+      @if (loading) {
+      <app-spinner />
+      }
+    </div>
+
+
+  </div>
 </div>

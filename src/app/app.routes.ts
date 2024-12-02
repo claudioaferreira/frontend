@@ -26,6 +26,8 @@ import { UsuariosEditarComponent } from './components/Mantenimientos/usuarios/us
 import { UsuariosListComponent } from './components/Mantenimientos/usuarios/usuarios-list/usuarios-list.component';
 import { EmpleadoMasterComponent } from './components/Mantenimientos/empleados/empleado-master/empleado-master.component';
 import { EmpleadoCrearComponent } from './components/Mantenimientos/empleados/empleado-crear/empleado-crear.component';
+import { VacacionesComponent } from './components/pages/vacaciones/vacaciones.component';
+import { AgregarReparacionComponent } from './components/pages/agregar-reparacion/agregar-reparacion.component';
 
 
 export const routes: Routes = [
@@ -39,6 +41,8 @@ export const routes: Routes = [
       {path: 'dashboard', component: DashboardComponent, canActivate: [authGuard]},
       { path: 'main-content', component: MainComponent, canActivate: [authGuard]},
       { path: 'auth-reparaciones', component: AuthReparacionesComponent, canActivate: [authGuard, esAdminGuard]},
+      { path: 'vacaciones', component: VacacionesComponent, canActivate: [authGuard, esAdminGuard]},
+      { path: 'add-reparacion', component: AgregarReparacionComponent, canActivate: [authGuard, esAdminGuard]},
 
 
       { path: 'mantenimiento', component: MantenimientoLayoutComponent, canActivate: [authGuard, esAdminGuard],

@@ -39,11 +39,16 @@
             <i class="bi bi-house"></i> Dashboard
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="add-reparacion">
+            <i class="bi bi-tools"></i> Agregar Reparación
+          </a>
+        </li>
         <app-autorizado rol='admin'>
           <ng-container autorizado>
             <li class="nav-item">
-              <a class="nav-link" routerLink="auth-reparaciones">
-                <i class="bi bi-bar-chart-steps"></i> Reparaciones
+              <a class="nav-link" routerLink="auth-reparaciones" name="autReparaciones">
+                <i class="bi bi-bar-chart-steps"></i>Aut. Reparaciones
                 <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">{{cantidadNoAutorizados}}</span>
               </a>
             </li>
@@ -51,9 +56,29 @@
           <ng-container noAutorizado>
             <li class="nav-item">
               <a class="nav-link disabled">
-                <i class="bi bi-bar-chart-steps"></i> Reparaciones
+                <i class="bi bi-bar-chart-steps"></i>Aut. Reparaciones
                 <span class="badge bg-soft-secondary text-gray-700 rounded-pill d-inline-flex align-items-center ms-auto disabled">
                   {{cantidadNoAutorizados}}
+                </span>
+              </a>
+            </li>
+          </ng-container>
+        </app-autorizado>
+        <app-autorizado rol='admin'>
+          <ng-container autorizado>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="vacaciones">
+                <i class="bi bi-airplane-engines"></i> Vacaciones
+                <span class="badge bg-soft-primary text-primary rounded-pill d-inline-flex align-items-center ms-auto">1</span>
+              </a>
+            </li>
+          </ng-container>
+          <ng-container noAutorizado>
+            <li class="nav-item">
+              <a class="nav-link disabled">
+                <i class="bi bi-airplane-engines"></i> Vacaciones
+                <span class="badge bg-soft-secondary text-gray-700 rounded-pill d-inline-flex align-items-center ms-auto disabled">
+                  1
                 </span>
               </a>
             </li>
